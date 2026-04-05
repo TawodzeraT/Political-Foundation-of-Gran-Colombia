@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gran Colombia Museum</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav>
+  <h2>Gran Colombia</h2>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#bolivar">Bolívar</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+  </ul>
+</nav>
+
+<section id="home" class="hero">
+  <h1>The Rise and Fall of Gran Colombia</h1>
+  <p>
+    A political museum exploring Simón Bolívar and the creation of Gran Colombia.
+  </p>
+</section>
+
+<section id="bolivar">
+  <h2>Simón Bolívar</h2>
+  <p>
+    Bolívar led independence movements and shaped the political structure of Gran Colombia.
+  </p>
+</section>
+
+<section>
+  <h2>Creation of Gran Colombia</h2>
+  <p>
+    Established in 1821, Gran Colombia unified multiple regions under one government.
+  </p>
+</section>
+
+<section id="timeline">
+  <h2>Interactive Timeline</h2>
+
+  <div class="timeline">
+    <div class="event" onclick="showInfo('1810')">1810</div>
+    <div class="event" onclick="showInfo('1819')">1819</div>
+    <div class="event" onclick="showInfo('1821')">1821</div>
+    <div class="event" onclick="showInfo('1828')">1828</div>
+    <div class="event" onclick="showInfo('1831')">1831</div>
+  </div>
+
+  <div id="infoBox"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
