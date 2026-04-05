@@ -2,7 +2,6 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   scroll-behavior: smooth;
-  background: linear-gradient(180deg, #fcd116, #003893, #ce1126);
   color: white;
 }
 
@@ -40,13 +39,18 @@ nav a {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Flag_of_Gran_Colombia.svg/2560px-Flag_of_Gran_Colombia.svg.png') center/cover no-repeat;
+  background: url('YOUR_HERO_IMAGE_URL_HERE') center/cover no-repeat;
+  color: white;
 }
+
+/* Section colors alternating */
+.color1 {background: linear-gradient(135deg, #FFD700, #003893);}
+.color2 {background: linear-gradient(135deg, #003893, #CE1126);}
+.color3 {background: linear-gradient(135deg, #CE1126, #FFD700);}
 
 section {
   padding: 100px 50px;
   margin: 20px;
-  background: rgba(0,0,0,0.7);
   border-radius: 15px;
   animation: fadeIn 1s ease-in;
 }
@@ -75,7 +79,8 @@ img {
 
 .event:hover {
   transform: scale(1.2);
-  background: #444;
+  background: #FFD700;
+  color: black;
 }
 
 #infoBox {
@@ -89,3 +94,4 @@ img {
   from {opacity: 0;}
   to {opacity: 1;}
 }
+
