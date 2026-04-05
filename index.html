@@ -1,472 +1,907 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gran Colombia — A Political Legacy</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Bebas+Neue&display=swap" rel="stylesheet" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gran Colombia — A Political Legacy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Lato:wght@300;400;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+
+/* ============================================================
+   COLOMBIA FLAG COLORS
+   Yellow  = #FCD116
+   Blue    = #003893
+   Red     = #CE1126
+   ============================================================ */
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ---- NAVBAR ---- */
+nav {
+  position: fixed; top:0; left:0; width:100%;
+  background: rgba(0,0,0,0.92);
+  border-bottom: 3px solid #FCD116;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 14px 36px;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+}
+.nav-logo {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem; letter-spacing:.12em; color:#FCD116;
+}
+nav ul { list-style:none; display:flex; gap:24px; }
+nav a {
+  color: rgba(255,255,255,0.75);
+  text-decoration:none; font-size:.82rem;
+  letter-spacing:.1em; text-transform:uppercase;
+  transition: color .2s;
+}
+nav a:hover { color:#FCD116; }
+
+/* ---- FLAG STRIPE BAR ---- */
+.flag-bar { display:flex; height:8px; }
+.flag-bar .y { background:#FCD116; flex:2; }
+.flag-bar .b { background:#003893; flex:1; }
+.flag-bar .r { background:#CE1126; flex:1; }
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(to bottom right,
+      rgba(0,56,147,0.88) 0%,
+      rgba(0,0,0,0.75) 45%,
+      rgba(206,17,38,0.82) 100%),
+    url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Flag_of_Gran_Colombia.svg/1600px-Flag_of_Gran_Colombia.svg.png')
+    center/cover no-repeat;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; padding: 140px 30px 80px;
+  position:relative;
+}
+.hero-flag-bottom { position:absolute; bottom:0; left:0; width:100%; }
+.hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size: clamp(2.8rem,7vw,6rem);
+  font-weight:900; line-height:1.05;
+  color:#fff; text-shadow:0 3px 24px rgba(0,0,0,.7);
+  margin-bottom:24px;
+}
+.hero h1 span { color:#FCD116; }
+.hero-sub {
+  font-size:clamp(1rem,2.2vw,1.3rem);
+  font-style:italic; color:rgba(255,255,255,.85);
+  margin-bottom:36px; max-width:680px;
+}
+.thesis-box {
+  background: rgba(252,209,22,0.15);
+  border:1px solid rgba(252,209,22,0.6);
+  border-left:5px solid #FCD116;
+  padding:20px 28px; border-radius:4px;
+  max-width:750px; margin:0 auto 40px;
+  text-align:left; font-style:italic;
+  color:#fff; font-size:1rem;
+}
+.thesis-box strong {
+  display:block; font-family:'Bebas Neue',sans-serif;
+  font-size:.75rem; letter-spacing:.2em;
+  color:#FCD116; font-style:normal; margin-bottom:8px;
+}
+.cta {
+  display:inline-block; background:#FCD116; color:#000;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem; letter-spacing:.15em;
+  padding:14px 44px; border-radius:2px;
+  text-decoration:none; transition:.25s;
+}
+.cta:hover { background:#ffe555; transform:translateY(-2px); }
+
+/* ---- STAT BAND ---- */
+.stat-band {
+  background:#003893;
+  border-top:4px solid #FCD116;
+  border-bottom:4px solid #CE1126;
+  display:flex; justify-content:center;
+  align-items:center; flex-wrap:wrap;
+  padding:26px 20px; gap:10px;
+}
+.stat { text-align:center; padding:0 40px; }
+.stat-num {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.4rem; color:#FCD116; line-height:1;
+}
+.stat-lbl {
+  font-size:.78rem; color:rgba(255,255,255,.75);
+  text-transform:uppercase; letter-spacing:.08em; margin-top:4px;
+}
+.stat-div { color:rgba(252,209,22,.4); font-size:1.8rem; }
+
+/* ---- SECTIONS ---- */
+.section { padding: 90px 0; position: relative; }
+
+.sec-yellow {
+  background: linear-gradient(135deg, #FCD116 0%, #e8b800 40%, #f5c800 100%);
+  color: #1a0d00;
+}
+.sec-yellow .sec-label { color: #7a4a00; }
+.sec-yellow h2 { color: #1a0d00; }
+.sec-yellow h2::after { background: #003893; }
+.sec-yellow p { color: #2a1800; }
+.sec-yellow blockquote { border-color:#003893; background:rgba(0,56,147,.12); color:#1a0d00; }
+.sec-yellow .card { background:rgba(0,0,0,.1); border-color:rgba(0,0,0,.2); }
+.sec-yellow .card h3 { color:#1a0d00; }
+.sec-yellow .card p { color:#2a1800; }
+.sec-yellow .img-caption { color:#5a3a00; }
+
+.sec-blue {
+  background: linear-gradient(135deg, #003893 0%, #0044b0 50%, #002d7a 100%);
+  color: #e8f0ff;
+}
+.sec-blue .sec-label { color: #FCD116; }
+.sec-blue h2 { color: #fff; }
+.sec-blue h2::after { background: #FCD116; }
+.sec-blue p { color: #ccdaff; }
+.sec-blue blockquote { border-color:#FCD116; background:rgba(252,209,22,.1); color:#fff; }
+.sec-blue .card { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); }
+.sec-blue .card h3 { color:#FCD116; }
+.sec-blue .card p { color:#ccdaff; }
+.sec-blue .img-caption { color:rgba(255,255,255,.6); }
+
+.sec-red {
+  background: linear-gradient(135deg, #CE1126 0%, #e61530 50%, #a50e1f 100%);
+  color: #ffe8ea;
+}
+.sec-red .sec-label { color: #FCD116; }
+.sec-red h2 { color: #fff; }
+.sec-red h2::after { background: #FCD116; }
+.sec-red p { color: #ffd8db; }
+.sec-red blockquote { border-color:#FCD116; background:rgba(252,209,22,.12); color:#fff; }
+.sec-red .card { background:rgba(0,0,0,.2); border-color:rgba(255,255,255,.3); }
+.sec-red .card h3 { color:#FCD116; }
+.sec-red .card p { color:#ffd8db; }
+.sec-red .img-caption { color:rgba(255,255,255,.65); }
+
+.sec-dark {
+  background: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
+}
+.sec-dark .sec-label { color: #FCD116; }
+.sec-dark h2 { color: #fff; }
+.sec-dark h2::after { background: #FCD116; }
+.sec-dark p { color: #d0d0d0; }
+.sec-dark blockquote { border-color:#FCD116; background:rgba(252,209,22,.06); color:#ccc; }
+.sec-dark .card { background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.12); }
+.sec-dark .card h3 { color:#FCD116; }
+.sec-dark .card p { color:#bbb; }
+.sec-dark .img-caption { color:rgba(255,255,255,.55); }
+
+.sec-gold-dark {
+  background: linear-gradient(135deg, #1a1000 0%, #2a1a00 50%, #1a1000 100%);
+  border-top: 4px solid #FCD116;
+  border-bottom: 4px solid #FCD116;
+}
+.sec-gold-dark .sec-label { color: #FCD116; }
+.sec-gold-dark h2 { color: #FCD116; }
+.sec-gold-dark h2::after { background: #CE1126; }
+.sec-gold-dark p { color: #f0d88a; }
+.sec-gold-dark blockquote { border-color:#FCD116; background:rgba(252,209,22,.1); color:#f0d88a; }
+
+/* ---- INNER WRAPPER ---- */
+.inner { max-width: 1150px; margin: 0 auto; padding: 0 44px; }
+
+/* ---- LABELS & HEADINGS ---- */
+.sec-label {
+  font-family:'Bebas Neue',sans-serif;
+  font-size:.72rem; letter-spacing:.24em;
+  text-transform:uppercase; margin-bottom:14px; display:block;
+}
+h2 {
+  font-family:'Playfair Display',serif;
+  font-size: clamp(1.9rem,4vw,3rem);
+  font-weight:700; line-height:1.2;
+  margin-bottom:36px; position:relative; padding-bottom:18px;
+}
+h2::after {
+  content:''; position:absolute; bottom:0; left:0;
+  width:56px; height:3px; border-radius:2px;
+}
+.intro-p {
+  font-style:italic; font-size:1.1rem;
+  max-width:760px; margin-bottom:56px; opacity:.85;
+}
+
+/* ---- TWO COLUMN ---- */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-bottom:56px; }
+.two-col.flip { direction:rtl; }
+.two-col.flip > * { direction:ltr; }
+
+/* ---- TEXT ---- */
+p { margin-bottom:1.1em; }
+h3 { font-family:'Playfair Display',serif; font-size:1.35rem; margin:1.4em 0 .5em; }
+blockquote {
+  border-left:4px solid; padding:14px 20px; margin:22px 0;
+  font-style:italic; font-size:1.05rem; border-radius:0 4px 4px 0;
+}
+
+/* ---- IMAGES ---- */
+.img-wrap { position:relative; overflow:hidden; border-radius:6px; }
+.img-wrap img {
+  width:100%; display:block; border-radius:6px;
+  box-shadow:0 16px 48px rgba(0,0,0,.5); transition: transform .4s ease;
+}
+.img-wrap img:hover { transform:scale(1.03); }
+.img-caption { margin-top:10px; font-size:.8rem; font-style:italic; text-align:center; }
+.img-wide img { max-height:400px; object-fit:cover; width:100%; }
+
+/* ---- CARDS ---- */
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:24px; margin-bottom:56px; }
+.card { border:1px solid; border-radius:6px; padding:28px 22px; border-top:4px solid #FCD116; transition: transform .3s; }
+.card:hover { transform:translateY(-6px); }
+.card-year { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; color:#FCD116; line-height:1; margin-bottom:10px; }
+.card h3 { font-size:1.1rem; margin:0 0 10px; }
+.card p { font-size:.93rem; line-height:1.72; margin:0; }
+
+/* ---- HIGHLIGHT BOX ---- */
+.hbox {
+  display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:start;
+  border:1px solid rgba(252,209,22,.35); border-radius:8px; padding:44px;
+  margin-top:56px; background: rgba(0,0,0,.2);
+}
+.hbox.full { grid-template-columns:1fr; }
+.hbox h3 { color:#FCD116; font-size:1.4rem; margin:0 0 16px; }
+.hbox p { font-size:.98rem; line-height:1.85; margin-bottom:.9em; }
+
+/* ---- CONSTITUTION BLOCK ---- */
+.const-block {
+  background:rgba(0,0,0,.25); border:1px solid rgba(252,209,22,.3);
+  border-radius:8px; padding:44px; margin:56px 0;
+}
+.const-block h3 { font-size:1.5rem; color:#FCD116; margin:0 0 28px; }
+.const-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:24px; }
+.const-item { border-top:2px solid rgba(252,209,22,.5); padding-top:14px; }
+.const-item h4 { font-family:'Bebas Neue',sans-serif; font-size:.95rem; letter-spacing:.1em; color:#FCD116; margin-bottom:8px; }
+.const-item p { font-size:.92rem; opacity:.8; margin:0; }
+
+/* ---- PHILOSOPHY GRID ---- */
+.phil-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; margin-top:44px; }
+.phil-card {
+  background:rgba(252,209,22,.1); border:1px solid rgba(252,209,22,.35);
+  border-radius:6px; padding:26px 22px; text-align:center; transition:background .3s;
+}
+.phil-card:hover { background:rgba(252,209,22,.2); }
+.phil-icon { font-size:2.2rem; margin-bottom:12px; }
+.phil-card h4 { color:#FCD116; font-size:1.05rem; margin-bottom:8px; }
+.phil-card p { font-size:.88rem; opacity:.8; margin:0; }
+
+/* ---- FRACTURE TIMELINE ---- */
+.ftl { border-left:3px solid rgba(252,209,22,.5); padding-left:40px; margin-top:48px; }
+.ft-item { position:relative; margin-bottom:52px; }
+.ft-dot {
+  position:absolute; left:-52px; top:4px;
+  width:18px; height:18px; background:#FCD116;
+  border-radius:50%; border:3px solid #0d0d0d;
+}
+.ft-item h3 { color:#FCD116; font-size:1.25rem; margin-bottom:12px; }
+.ft-item p { opacity:.85; }
+
+/* ---- COLLAPSE CARDS ---- */
+.collapse-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(245px,1fr)); gap:24px; margin-bottom:56px; }
+.col-card {
+  background:rgba(0,0,0,.25); border:1px solid rgba(255,255,255,.15);
+  border-left:5px solid #CE1126; padding:30px 26px; border-radius:4px; transition:transform .3s;
+}
+.col-card:hover { transform:translateY(-4px); }
+.col-flag { font-size:2rem; margin-bottom:10px; }
+.col-card h3 { color:#fff; font-size:1.1rem; margin-bottom:6px; }
+.col-year { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:#FCD116; margin-bottom:10px; }
+.col-card p { font-size:.92rem; opacity:.75; margin:0; }
+
+/* ---- DEBATE GRID ---- */
+.debate { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:20px; }
+.deb-side { background:rgba(255,255,255,.06); border-top:3px solid #003893; padding:22px; border-radius:4px; }
+.deb-side h4 { color:#FCD116; margin-bottom:10px; font-size:1rem; }
+.deb-side p { font-size:.92rem; opacity:.8; margin:0; }
+
+/* ---- INTERACTIVE TIMELINE ---- */
+.tl-wrap { overflow-x:auto; padding:50px 10px 20px; cursor:grab; position:relative; }
+.tl-line {
+  position:absolute; top:68px; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,#FCD116,#003893,#CE1126); border-radius:2px;
+}
+.tl-events { display:flex; min-width:max-content; padding:0 20px; }
+.tl-ev { display:flex; flex-direction:column; align-items:center; padding:0 22px; cursor:pointer; transition:transform .2s; }
+.tl-ev:hover { transform:translateY(-5px); }
+.tl-dot {
+  width:20px; height:20px; background:#FCD116; border-radius:50%;
+  border:4px solid #0d0d0d; margin-bottom:16px; z-index:1; position:relative; transition:.2s;
+}
+.tl-ev:hover .tl-dot { background:#fff; transform:scale(1.3); }
+.tl-yr { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:#FCD116; margin-bottom:4px; }
+.tl-lbl { font-size:.75rem; color:rgba(255,255,255,.6); text-align:center; max-width:85px; line-height:1.3; }
+
+/* ---- MODAL ---- */
+.modal-bg {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,.88);
+  z-index:3000; align-items:center; justify-content:center; padding:20px;
+}
+.modal-bg.on { display:flex; }
+.modal {
+  background:#111; border:1px solid rgba(252,209,22,.5);
+  border-top:5px solid #FCD116; border-radius:8px; padding:48px;
+  max-width:580px; width:100%; position:relative; animation:mIn .3s ease;
+}
+@keyframes mIn {
+  from { opacity:0; transform:translateY(18px) scale(.97); }
+  to   { opacity:1; transform:none; }
+}
+.m-close { position:absolute; top:14px; right:18px; background:none; border:none; color:#888; font-size:1.3rem; cursor:pointer; }
+.m-close:hover { color:#FCD116; }
+.m-yr { font-family:'Bebas Neue',sans-serif; font-size:3.2rem; color:#FCD116; line-height:1; margin-bottom:6px; }
+#mTitle { font-family:'Playfair Display',serif; font-size:1.5rem; color:#fff; margin-bottom:18px; }
+#mText { font-size:.98rem; color:#ccc; line-height:1.85; margin-bottom:18px; }
+.m-sig { background:rgba(252,209,22,.08); border-left:3px solid #FCD116; padding:12px 16px; font-style:italic; font-size:.88rem; color:#aaa; border-radius:0 4px 4px 0; }
+
+/* ---- NATIONS ---- */
+.nations { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; margin-top:44px; }
+.nation { padding:26px 22px; border-radius:6px; transition:transform .3s; }
+.nation:hover { transform:translateY(-4px); }
+.nation.co { background:rgba(252,209,22,.15); border:1px solid rgba(252,209,22,.4); }
+.nation.ve { background:rgba(0,56,147,.3); border:1px solid rgba(0,56,147,.6); }
+.nation.ec { background:rgba(0,100,0,.2); border:1px solid rgba(0,200,0,.3); }
+.nation.pa { background:rgba(206,17,38,.2); border:1px solid rgba(206,17,38,.4); }
+.nation h4 { font-size:1.1rem; color:#fff; margin-bottom:10px; }
+.nation p { font-size:.88rem; opacity:.75; margin:0; }
+
+/* ---- BIG QUOTE ---- */
+.big-quote { text-align:center; padding:56px 20px; }
+.big-quote blockquote {
+  border:none; background:none; font-family:'Playfair Display',serif;
+  font-size:clamp(1.3rem,3vw,2.1rem); font-style:italic;
+  color:#FCD116; max-width:720px; margin:0 auto; padding:0;
+}
+.big-quote cite { display:block; margin-top:14px; font-size:.9rem; color:rgba(255,255,255,.55); font-style:normal; }
+
+/* ---- CONCLUSION ---- */
+.concl { max-width:820px; margin:0 auto; }
+.concl p { font-size:1.08rem; line-height:1.95; margin-bottom:1.3em; }
+
+/* ---- SOURCES ---- */
+.src-list { max-width:760px; }
+.src-item { display:flex; gap:18px; align-items:flex-start; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.08); font-size:.97rem; line-height:1.75; }
+.src-n { font-family:'Bebas Neue',sans-serif; font-size:1.2rem; color:#FCD116; min-width:22px; }
+
+/* ---- FOOTER ---- */
+footer { background:#060606; border-top:1px solid rgba(255,255,255,.08); text-align:center; padding:56px 30px; }
+.foot-flag { display:flex; height:7px; border-radius:4px; overflow:hidden; width:80px; margin:0 auto 22px; }
+.foot-flag .y { background:#FCD116; flex:2; }
+.foot-flag .b { background:#003893; flex:1; }
+.foot-flag .r { background:#CE1126; flex:1; }
+.foot-title { font-family:'Playfair Display',serif; font-size:1.3rem; color:#fff; margin-bottom:6px; }
+.foot-sub { font-size:.82rem; color:rgba(255,255,255,.45); letter-spacing:.06em; }
+
+/* ---- REVEAL ANIMATION ---- */
+.reveal { opacity:0; transform:translateY(32px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.on { opacity:1; transform:none; }
+.d1 { transition-delay:.15s; }
+.d2 { transition-delay:.3s; }
+.d3 { transition-delay:.45s; }
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:880px){
+  .two-col,.two-col.flip { grid-template-columns:1fr; direction:ltr; gap:32px; }
+  .hbox { grid-template-columns:1fr; padding:28px 20px; }
+  .debate { grid-template-columns:1fr; }
+  nav ul { display:none; }
+  .inner { padding:0 20px; }
+  .stat-div { display:none; }
+}
+</style>
 </head>
 <body>
 
-  <nav id="navbar">
-    <div class="nav-logo">Gran Colombia</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#bolivar">Bolívar</a></li>
-      <li><a href="#independence">Independence</a></li>
-      <li><a href="#creation">Creation</a></li>
-      <li><a href="#conflict">Conflict</a></li>
-      <li><a href="#collapse">Collapse</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#legacy">Legacy</a></li>
-    </ul>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-  </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Gran Colombia</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#bolivar">Bolívar</a></li>
+    <li><a href="#independence">Independence</a></li>
+    <li><a href="#creation">Creation</a></li>
+    <li><a href="#conflict">Conflict</a></li>
+    <li><a href="#collapse">Collapse</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#legacy">Legacy</a></li>
+  </ul>
+</nav>
 
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#home" onclick="toggleMenu()">Home</a>
-    <a href="#bolivar" onclick="toggleMenu()">Bolívar</a>
-    <a href="#independence" onclick="toggleMenu()">Independence</a>
-    <a href="#creation" onclick="toggleMenu()">Creation</a>
-    <a href="#conflict" onclick="toggleMenu()">Conflict</a>
-    <a href="#collapse" onclick="toggleMenu()">Collapse</a>
-    <a href="#timeline" onclick="toggleMenu()">Timeline</a>
-    <a href="#legacy" onclick="toggleMenu()">Legacy</a>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.25em;color:#FCD116;margin-bottom:18px;">Digital Museum Exhibition</div>
+    <h1>The Rise &amp; Fall of<br/><span>Gran Colombia</span></h1>
+    <p class="hero-sub">Simón Bolívar's Vision for a United South America —<br/>and the Political Forces That Tore It Apart</p>
+    <div class="thesis-box">
+      <strong>Central Argument</strong>
+      Gran Colombia failed not because Bolívar's vision was wrong, but because its centralized structure could not contain the powerful regional identities and ideological divisions inherited from centuries of colonial rule.
+    </div>
+    <a href="#bolivar" class="cta">Begin the Exhibition ↓</a>
   </div>
+  <div class="hero-flag-bottom"><div class="flag-bar"><div class="y"></div><div class="b"></div><div class="r"></div></div></div>
+</section>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content reveal">
-      <div class="hero-eyebrow">Digital Museum Exhibition</div>
-      <h1 class="hero-title">The Rise &amp; Fall<br/>of Gran Colombia</h1>
-      <p class="hero-subtitle">Simón Bolívar's Vision for a United South America —<br/>and the Political Forces That Tore It Apart</p>
-      <div class="hero-thesis">
-        <span class="thesis-label">Central Argument</span>
-        Gran Colombia failed not because Bolívar's vision was wrong, but because the republic's centralized structure could not contain the powerful regional identities and ideological divisions it inherited from centuries of colonial rule.
-      </div>
-      <a href="#bolivar" class="hero-cta">Begin the Exhibition ↓</a>
-    </div>
-    <div class="hero-flag">
-      <div class="flag-stripe yellow"></div>
-      <div class="flag-stripe blue"></div>
-      <div class="flag-stripe red"></div>
-    </div>
-  </section>
+<!-- STAT BAND -->
+<div class="stat-band">
+  <div class="stat"><div class="stat-num">1810</div><div class="stat-lbl">Independence Begins</div></div>
+  <div class="stat-div">—</div>
+  <div class="stat"><div class="stat-num">1821</div><div class="stat-lbl">Gran Colombia Founded</div></div>
+  <div class="stat-div">—</div>
+  <div class="stat"><div class="stat-num">1831</div><div class="stat-lbl">Republic Dissolved</div></div>
+  <div class="stat-div">—</div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">Nations Born</div></div>
+</div>
 
-  <!-- STATS BAND -->
-  <div class="intro-band">
-    <div class="band-item"><span class="band-num">1810</span><span class="band-label">Independence Begins</span></div>
-    <div class="band-divider">—</div>
-    <div class="band-item"><span class="band-num">1821</span><span class="band-label">Gran Colombia Founded</span></div>
-    <div class="band-divider">—</div>
-    <div class="band-item"><span class="band-num">1831</span><span class="band-label">Republic Dissolved</span></div>
-    <div class="band-divider">—</div>
-    <div class="band-item"><span class="band-num">4</span><span class="band-label">Nations Created</span></div>
-  </div>
-
-  <!-- GALLERY I: BOLÍVAR -->
-  <section id="bolivar" class="exhibit-section gold-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery I</div>
-      <h2 class="section-title">Simón Bolívar: El Libertador</h2>
-      <div class="two-col">
-        <div class="col-text reveal">
-          <p>Simón José Antonio de la Santísima Trinidad Bolívar y Palacios (1783–1830) was born into the Creole elite of Caracas, Venezuela. Orphaned young, he was educated by private tutors before traveling to Europe, where Enlightenment ideas — Rousseau, Voltaire, Montesquieu — ignited his revolutionary vision.</p>
-          <p>In 1805, standing on Rome's Monte Sacro, Bolívar swore an oath to liberate his homeland from Spanish tyranny. That private vow became the driving force of a military and political career that would reshape an entire continent. By the time he was 36, he had won independence for territories that would become five modern nations.</p>
-          <p>Bolívar was not simply a military genius — he was a political theorist. His <em>Angostura Address</em> of 1819 remains one of the most sophisticated political texts produced in the Americas, grappling with democracy, slavery, inequality, and the unique challenges of Latin American self-governance.</p>
-          <blockquote>"A people that loves freedom will in the end be free." — Simón Bolívar</blockquote>
-        </div>
-        <div class="col-image reveal delay-1">
-          <div class="image-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Portrait_of_Sim%C3%B3n_Bol%C3%ADvar%2C_1823_by_Jos%C3%A9_Gil_de_Castro.jpg/800px-Portrait_of_Sim%C3%B3n_Bol%C3%ADvar%2C_1823_by_Jos%C3%A9_Gil_de_Castro.jpg" alt="Portrait of Simón Bolívar" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6f/Simon_Bolivar_2.jpg'" />
-            <div class="image-caption">Portrait of Simón Bolívar by José Gil de Castro, 1823</div>
-          </div>
-        </div>
+<!-- GALLERY I — BOLÍVAR (YELLOW) -->
+<section id="bolivar" class="section sec-yellow">
+  <div class="inner">
+    <span class="sec-label">Gallery I</span>
+    <h2>Simón Bolívar: El Libertador</h2>
+    <div class="two-col">
+      <div class="reveal">
+        <p>Simón José Antonio de la Santísima Trinidad Bolívar y Palacios (1783–1830) was born into the Creole elite of Caracas, Venezuela. Orphaned young, he traveled to Europe where Enlightenment ideas — Rousseau, Voltaire, Montesquieu — ignited his revolutionary vision.</p>
+        <p>In 1805, standing on Rome's Monte Sacro, Bolívar swore an oath to liberate his homeland from Spanish tyranny. That private vow became the driving force of a military and political career that would reshape an entire continent. By 36, he had won independence for territories that would become five modern nations.</p>
+        <p>Bolívar was not simply a military genius — he was a political theorist. His <em>Angostura Address</em> of 1819 remains one of the most sophisticated political texts produced in the Americas, grappling with democracy, slavery, and the unique challenges of Latin American self-governance.</p>
+        <blockquote>"A people that loves freedom will in the end be free." — Simón Bolívar</blockquote>
       </div>
-    </div>
-  </section>
-
-  <!-- GALLERY II: COLONIAL CONTEXT -->
-  <section class="exhibit-section dark-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery II</div>
-      <h2 class="section-title">The World Bolívar Inherited</h2>
-      <div class="two-col reverse">
-        <div class="col-image reveal">
-          <div class="image-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Virreinato_de_Nueva_Granada_1810.svg/800px-Virreinato_de_Nueva_Granada_1810.svg.png" alt="Viceroyalty of New Granada" />
-            <div class="image-caption">The Viceroyalty of New Granada, c. 1810 — the colonial territory that became Gran Colombia</div>
-          </div>
+      <div class="reveal d1">
+        <div class="img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Portrait_of_Sim%C3%B3n_Bol%C3%ADvar%2C_1823_by_Jos%C3%A9_Gil_de_Castro.jpg/800px-Portrait_of_Sim%C3%B3n_Bol%C3%ADvar%2C_1823_by_Jos%C3%A9_Gil_de_Castro.jpg"
+               alt="Portrait of Simón Bolívar 1823"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6f/Simon_Bolivar_2.jpg'"/>
         </div>
-        <div class="col-text reveal delay-1">
-          <p>For nearly three centuries, the region of northern South America existed under Spanish colonial authority as the <strong>Viceroyalty of New Granada</strong>, established in 1717. This vast unit encompassed present-day Colombia, Venezuela, Ecuador, and Panama — the exact territories Bolívar would later attempt to unify.</p>
-          <p>Colonial society was rigidly stratified. Peninsulares (Spanish-born) sat at the top; Creoles like Bolívar held wealth and education but were barred from the highest offices. This contradiction brewed deep resentment that would fuel revolution.</p>
-          <p>The colonial economy was extractive, designed to funnel wealth back to Spain. Tax burdens fell unevenly, trade was restricted, and local governance was routinely overruled by distant imperial decisions. By 1800, these frustrations had been festering for generations, awaiting only a spark.</p>
-          <blockquote>"We were never viceroys or governors, except by extraordinary means; rarely archbishops and bishops; never diplomats." — Bolívar, Angostura Address</blockquote>
-        </div>
+        <p class="img-caption">Portrait of Simón Bolívar by José Gil de Castro, 1823</p>
       </div>
-    </div>
-  </section>
-
-  <!-- GALLERY III: INDEPENDENCE -->
-  <section id="independence" class="exhibit-section red-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery III</div>
-      <h2 class="section-title">The Fire of Independence (1810–1819)</h2>
-      <p class="section-intro reveal">The spark came from an unexpected direction. In 1808, Napoleon Bonaparte's invasion of Spain and the forced abdication of King Ferdinand VII created a crisis of legitimacy throughout the Spanish empire.</p>
-      <div class="card-grid">
-        <div class="card reveal">
-          <div class="card-year">1808</div>
-          <h3>The Napoleonic Crisis</h3>
-          <p>Napoleon's invasion of Spain topples the monarchy. Colonial juntas form across Latin America, asserting local autonomy for the first time in three centuries.</p>
-        </div>
-        <div class="card reveal delay-1">
-          <div class="card-year">1810</div>
-          <h3>The 20th of July</h3>
-          <p>In Bogotá, a staged confrontation over a flower vase triggers a public uprising. A junta is formed. July 20th is still celebrated as Colombian Independence Day.</p>
-        </div>
-        <div class="card reveal delay-2">
-          <div class="card-year">1813</div>
-          <h3>The Admirable Campaign</h3>
-          <p>Bolívar leads a lightning campaign across Venezuela, recapturing Caracas in 90 days. He is declared "El Libertador" for the first time.</p>
-        </div>
-        <div class="card reveal delay-3">
-          <div class="card-year">1816</div>
-          <h3>Return from Haiti</h3>
-          <p>Aided by Haitian President Alexandre Pétion, Bolívar returns with supplies. Pétion's condition: Bolívar must free the enslaved. This shapes his later abolition decrees.</p>
-        </div>
-      </div>
-      <div class="highlight-box reveal">
-        <div class="highlight-image">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Batalla_de_Boyaca.jpg" alt="Battle of Boyacá, 1819" />
-          <div class="image-caption">Battle of Boyacá, August 7, 1819 — the decisive battle of Colombian independence</div>
-        </div>
-        <div class="highlight-text">
-          <h3>The Battle of Boyacá — August 7, 1819</h3>
-          <p>The defining moment came on a bridge over the Teatinos River at Boyacá. Bolívar's forces — exhausted after a punishing march over the Andes — met the Spanish royalist army and defeated them in under two hours.</p>
-          <p>The Spanish Viceroy fled Bogotá before Bolívar even arrived. Three days later, Bolívar entered the capital to a hero's welcome. New Granada was free. August 7th is still a national holiday in Colombia today.</p>
-          <p>The Battle of Boyacá was more than a military victory — it was the political opening Bolívar needed to pursue his larger dream: a unified republic stretching from the Caribbean coast to the Pacific.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY IV: CREATION -->
-  <section id="creation" class="exhibit-section blue-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery IV</div>
-      <h2 class="section-title">Building a Nation: The Creation of Gran Colombia</h2>
-      <div class="two-col">
-        <div class="col-text reveal">
-          <h3>The Congress of Angostura (1819)</h3>
-          <p>Even before Boyacá, Bolívar was laying political foundations. In February 1819, from the remote Orinoco town of Angostura, he addressed a congress he had convened to give his revolution constitutional legitimacy.</p>
-          <p>His <em>Angostura Address</em> was a masterwork of political philosophy. Bolívar argued that Latin America required a stronger executive than the United States — because the region's colonial legacy had left populations unprepared for the full demands of federal democracy.</p>
-          <p>Congress approved a provisional constitution and voted to unite Venezuela and New Granada into a single republic: <strong>Gran Colombia</strong>.</p>
-        </div>
-        <div class="col-image reveal delay-1">
-          <div class="image-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Flag_of_Gran_Colombia.svg/800px-Flag_of_Gran_Colombia.svg.png" alt="Flag of Gran Colombia" />
-            <div class="image-caption">The flag of Gran Colombia — yellow, blue, and red — ancestor of the Colombian, Venezuelan, and Ecuadorian flags</div>
-          </div>
-        </div>
-      </div>
-      <div class="constitution-block reveal">
-        <div class="const-header">
-          <div class="const-seal">⚖</div>
-          <h3>The Constitution of Cúcuta — 1821</h3>
-        </div>
-        <div class="const-grid">
-          <div class="const-item">
-            <h4>Territory</h4>
-            <p>Encompassed present-day Colombia, Venezuela, Ecuador, and Panama — roughly 2.5 million km², larger than Western Europe.</p>
-          </div>
-          <div class="const-item">
-            <h4>Government</h4>
-            <p>A centralized republic with a powerful executive president, a bicameral Congress, and an independent judiciary. Bolívar became the first president.</p>
-          </div>
-          <div class="const-item">
-            <h4>Capital</h4>
-            <p>Bogotá served as the capital, with Francisco de Paula Santander as Vice President running daily affairs while Bolívar continued liberating other territories.</p>
-          </div>
-          <div class="const-item">
-            <h4>Abolition</h4>
-            <p>The "free womb" law provided that children born to enslaved mothers after 1821 would be free at age 18 — a first step toward abolition.</p>
-          </div>
-        </div>
-      </div>
-      <div class="map-section reveal">
-        <div class="image-frame wide-frame">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Gran_Colombia_1824.svg/1200px-Gran_Colombia_1824.svg.png" alt="Map of Gran Colombia 1824" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Flag_of_Gran_Colombia.svg/800px-Flag_of_Gran_Colombia.svg.png'" />
-          <div class="image-caption">Gran Colombia at its greatest extent, 1824 — a republic larger than Western Europe</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY V: POLITICAL VISION -->
-  <section class="exhibit-section gold-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery V</div>
-      <h2 class="section-title">Bolívar's Political Vision</h2>
-      <div class="two-col">
-        <div class="col-text reveal">
-          <p>Bolívar's political philosophy was shaped by a fundamental tension: he believed deeply in liberty and republican government, yet feared that Latin American societies — shaped by colonial despotism and racial hierarchy — were not yet ready for full democratic self-governance.</p>
-          <p>He admired the United States but rejected its federal model for Latin America, arguing that a weak central government would lead to fragmentation and caudillo warfare. He proposed instead a "moral power" — an independent educational body guiding public virtue — drawn from ancient Rome.</p>
-          <p>His <em>Bolivian Constitution</em> of 1826 went furthest: it proposed a lifetime presidency and an appointed senate. Critics saw this as a barely disguised monarchy. Supporters argued it was the only realistic path to stability in volatile postcolonial societies.</p>
-        </div>
-        <div class="col-image reveal delay-1">
-          <div class="image-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Simon_Bolivar_2.jpg" alt="Simón Bolívar" />
-            <div class="image-caption">Simón Bolívar — soldier, statesman, and political philosopher</div>
-          </div>
-        </div>
-      </div>
-      <div class="philosophy-grid reveal">
-        <div class="phil-card">
-          <div class="phil-icon">🦅</div>
-          <h4>Strong Executive</h4>
-          <p>A powerful, unified presidency was essential to prevent the regional fragmentation he saw destroying Gran Colombia from within.</p>
-        </div>
-        <div class="phil-card">
-          <div class="phil-icon">⚖️</div>
-          <h4>Mixed Government</h4>
-          <p>Drawing on Montesquieu and classical Rome, Bolívar envisioned branches of government that balanced democracy with aristocratic stability.</p>
-        </div>
-        <div class="phil-card">
-          <div class="phil-icon">🌍</div>
-          <h4>Pan-American Unity</h4>
-          <p>The 1826 Congress of Panama was Bolívar's attempt to create a confederation of all Latin American republics — a vision 130 years ahead of its time.</p>
-        </div>
-        <div class="phil-card">
-          <div class="phil-icon">🔓</div>
-          <h4>Anti-Slavery</h4>
-          <p>Influenced by Haiti's example, Bolívar consistently pushed for abolition even when it alienated wealthy Creole elites who depended on enslaved labor.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY VI: CONFLICT -->
-  <section id="conflict" class="exhibit-section dark-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery VI</div>
-      <h2 class="section-title">The Fractures Within</h2>
-      <p class="section-intro reveal">From the moment of its founding, Gran Colombia was under stress. The republic's great size, geographic diversity, and the competing ambitions of its regional elites created fractures that Bolívar's charisma alone could not seal.</p>
-      <div class="fracture-timeline">
-        <div class="fracture-item reveal">
-          <div class="fracture-dot"></div>
-          <div class="fracture-content">
-            <h3>Bolívar vs. Santander: The Great Divide</h3>
-            <p>The deepest rift in Gran Colombia was between its two founders. Francisco de Paula Santander, the Vice President governing from Bogotá, was a legalist who believed in strict constitutional government. Bolívar demanded executive flexibility and military authority. Their conflict mirrored the liberal-conservative divide that would define Colombian politics for the rest of the 19th century.</p>
-          </div>
-        </div>
-        <div class="fracture-item reveal delay-1">
-          <div class="fracture-dot"></div>
-          <div class="fracture-content">
-            <h3>Venezuela's Resentment</h3>
-            <p>Venezuelans resented being governed from Bogotá after supplying the bulk of the liberation army's soldiers. José Antonio Páez, the powerful llanero caudillo, became the focal point of Venezuelan separatism. When Bogotá ordered Páez to stand trial in 1826, Venezuela nearly broke away immediately.</p>
-          </div>
-        </div>
-        <div class="fracture-item reveal delay-2">
-          <div class="fracture-dot"></div>
-          <div class="fracture-content">
-            <h3>The Liberal-Conservative Split</h3>
-            <p>Colombian politics divided sharply between centralists (strong national government, supported by the Church) and federalists (regional autonomy, liberal reforms). This ideological war, which would produce nine civil conflicts in Colombia by 1902, first took shape in Gran Colombia's Congress. It determined who controlled land, labor, and local power.</p>
-          </div>
-        </div>
-        <div class="fracture-item reveal delay-3">
-          <div class="fracture-dot"></div>
-          <div class="fracture-content">
-            <h3>Geographic Impossibility</h3>
-            <p>Gran Colombia stretched across mountains, jungles, savannas, and coastlines with almost no connecting infrastructure. Travel from Bogotá to Caracas could take weeks. Orders from the capital arrived outdated. The republic was not so much governed as theoretically unified — its centralizing ambitions always outrunning its administrative capacity.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY VII: DICTATORSHIP -->
-  <section class="exhibit-section red-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery VII</div>
-      <h2 class="section-title">The Dictator's Gambit (1828)</h2>
-      <div class="two-col">
-        <div class="col-image reveal">
-          <div class="image-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Francisco_de_Paula_Santander.jpg/400px-Francisco_de_Paula_Santander.jpg" alt="Francisco de Paula Santander" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6f/Simon_Bolivar_2.jpg'" />
-            <div class="image-caption">Francisco de Paula Santander — Bolívar's Vice President and greatest political rival</div>
-          </div>
-        </div>
-        <div class="col-text reveal delay-1">
-          <h3>The Convention of Ocaña</h3>
-          <p>By 1828, Gran Colombia was in full crisis. A constitutional convention in Ocaña, called to reform the republic, deadlocked completely between Bolívar's allies and Santander's liberal faction. Bolívar's supporters walked out, leaving the convention without a quorum.</p>
-          <h3>Assuming the Dictatorship</h3>
-          <p>On August 27, 1828, Bolívar issued the Decree of Dictatorship, assuming emergency powers. He suspended the constitution and ruled by decree. Santander was implicated in a September assassination attempt and exiled.</p>
-          <p>Bolívar insisted the dictatorship was temporary. But his claim to be "El Libertador" now competed with the image of a would-be tyrant. The very men who had fought beside him began to turn away.</p>
-          <blockquote>"I have served the revolution twenty years, and from those I have drawn no other certainty than that: one must work hard, suffer much, and die." — Bolívar, 1830</blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY VIII: COLLAPSE -->
-  <section id="collapse" class="exhibit-section dark-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery VIII</div>
-      <h2 class="section-title">The Dissolution (1829–1831)</h2>
-      <p class="section-intro reveal">The republic that had been born in 1821 died in stages, each secession accelerating the next, like supports giving way in a collapsing building.</p>
-      <div class="collapse-grid">
-        <div class="collapse-card reveal">
-          <div class="collapse-flag">🇻🇪</div>
-          <h3>Venezuela Breaks Away</h3>
-          <div class="collapse-year">1829</div>
-          <p>José Antonio Páez convened a congress in Caracas that voted to separate Venezuela from Gran Colombia. The heartland of Bolívar's own birth was the first to go. Bolívar called it "political suicide."</p>
-        </div>
-        <div class="collapse-card reveal delay-1">
-          <div class="collapse-flag">🇪🇨</div>
-          <h3>Ecuador Separates</h3>
-          <div class="collapse-year">1830</div>
-          <p>Ecuador, under General Juan José Flores, declared independence in May 1830. The most geographically remote part of the republic, separated from both Bogotá and Caracas by the Andes, it had never felt truly unified.</p>
-        </div>
-        <div class="collapse-card reveal delay-2">
-          <div class="collapse-flag">☠️</div>
-          <h3>Bolívar Resigns and Dies</h3>
-          <div class="collapse-year">1830</div>
-          <p>Bolívar resigned on April 27, 1830 — aged 47, tubercular, financially ruined, and heartbroken. He died on December 17, 1830 near Santa Marta, Colombia. His last words: "José! Let's go! These people don't want us here."</p>
-        </div>
-        <div class="collapse-card reveal delay-3">
-          <div class="collapse-flag">🇵🇦</div>
-          <h3>Panama's Long Path</h3>
-          <div class="collapse-year">1831–1903</div>
-          <p>Panama remained attached to Colombia after Gran Colombia's dissolution, not becoming independent until 1903 when the U.S. — eager to build a canal — backed a separatist movement against Bogotá.</p>
-        </div>
-      </div>
-      <div class="highlight-box reveal">
-        <div class="highlight-text full-width">
-          <h3>Why Did Gran Colombia Fail? — Historians Debate</h3>
-          <div class="debate-grid">
-            <div class="debate-side">
-              <h4>The Structural Argument</h4>
-              <p>Historians like David Bushnell argue Gran Colombia was always an impossible project. Too large, too diverse, too poorly connected to be governed from a single capital. Bolívar's personality could not substitute for institutions.</p>
-            </div>
-            <div class="debate-side">
-              <h4>The Political Argument</h4>
-              <p>Others emphasize elite interests. Creole landowners had fought for independence to gain local power, not to transfer it to a distant central government. Gran Colombia was dismantled by those who stood to gain most from fragmentation.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INTERACTIVE TIMELINE -->
-  <section id="timeline" class="exhibit-section gold-theme">
-    <div class="section-inner">
-      <div class="section-label">Interactive Feature</div>
-      <h2 class="section-title">Interactive Timeline</h2>
-      <p class="section-intro">Click on any event to explore its historical significance.</p>
-      <div class="timeline-container">
-        <div class="timeline-line"></div>
-        <div class="timeline-events">
-          <div class="t-event" onclick="openModal('1783')"><div class="t-dot"></div><div class="t-year">1783</div><div class="t-title">Bolívar Born</div></div>
-          <div class="t-event" onclick="openModal('1808')"><div class="t-dot"></div><div class="t-year">1808</div><div class="t-title">Napoleon Invades Spain</div></div>
-          <div class="t-event" onclick="openModal('1810')"><div class="t-dot"></div><div class="t-year">1810</div><div class="t-title">Independence Movements</div></div>
-          <div class="t-event" onclick="openModal('1819a')"><div class="t-dot"></div><div class="t-year">Feb 1819</div><div class="t-title">Congress of Angostura</div></div>
-          <div class="t-event" onclick="openModal('1819b')"><div class="t-dot"></div><div class="t-year">Aug 1819</div><div class="t-title">Battle of Boyacá</div></div>
-          <div class="t-event" onclick="openModal('1821')"><div class="t-dot"></div><div class="t-year">1821</div><div class="t-title">Gran Colombia Founded</div></div>
-          <div class="t-event" onclick="openModal('1826')"><div class="t-dot"></div><div class="t-year">1826</div><div class="t-title">Congress of Panama</div></div>
-          <div class="t-event" onclick="openModal('1828')"><div class="t-dot"></div><div class="t-year">1828</div><div class="t-title">Bolívar's Dictatorship</div></div>
-          <div class="t-event" onclick="openModal('1829')"><div class="t-dot"></div><div class="t-year">1829</div><div class="t-title">Venezuela Secedes</div></div>
-          <div class="t-event" onclick="openModal('1830a')"><div class="t-dot"></div><div class="t-year">May 1830</div><div class="t-title">Ecuador Separates</div></div>
-          <div class="t-event" onclick="openModal('1830b')"><div class="t-dot"></div><div class="t-year">Dec 1830</div><div class="t-title">Death of Bolívar</div></div>
-          <div class="t-event" onclick="openModal('1831')"><div class="t-dot"></div><div class="t-year">1831</div><div class="t-title">Gran Colombia Dissolved</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODAL POPUP -->
-  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      <div class="modal-year" id="modalYear"></div>
-      <h3 id="modalTitle"></h3>
-      <p id="modalText"></p>
-      <div class="modal-significance" id="modalSignificance"></div>
     </div>
   </div>
+</section>
 
-  <!-- GALLERY IX: LEGACY -->
-  <section id="legacy" class="exhibit-section blue-theme">
-    <div class="section-inner">
-      <div class="section-label">Gallery IX</div>
-      <h2 class="section-title">The Long Shadow of Gran Colombia</h2>
-      <div class="two-col">
-        <div class="col-text reveal">
-          <h3>Colombia's Turbulent 19th Century</h3>
-          <p>The republic that replaced Gran Colombia spent the rest of the 19th century fighting the same battles Gran Colombia had failed to resolve. Between 1830 and 1902, Colombia experienced nine major civil wars, all fundamentally about the unresolved tension between federalism and centralism.</p>
-          <p>The culmination was the devastating <strong>Thousand Days' War (1899–1902)</strong>, which left over 100,000 dead and created the conditions for Panama's separation in 1903 — the final fracturing of Bolívar's original vision.</p>
-          <h3>Bolívar in Modern Memory</h3>
-          <p>In Venezuela, Hugo Chávez adopted "Bolivarianism" as his socialist revolution's brand, renaming the country the Bolivarian Republic of Venezuela. In Colombia, Bolívar is a founding father — his statue in every city plaza, his image on currency — but the political struggles he could not solve still echo in Colombia's peace process and debates over inequality.</p>
+<!-- GALLERY II — COLONIAL CONTEXT (BLUE) -->
+<section class="section sec-blue">
+  <div class="inner">
+    <span class="sec-label">Gallery II</span>
+    <h2>The World Bolívar Inherited</h2>
+    <div class="two-col flip">
+      <div class="reveal">
+        <div class="img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Virreinato_de_Nueva_Granada_1810.svg/800px-Virreinato_de_Nueva_Granada_1810.svg.png"
+               alt="Map of the Viceroyalty of New Granada 1810"/>
         </div>
-        <div class="col-image reveal delay-1">
-          <div class="image-frame">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/800px-Flag_of_Colombia.svg.png" alt="Flag of Colombia" />
-            <div class="image-caption">The flag of Colombia — yellow, blue, and red — inherited directly from the tricolor of Gran Colombia</div>
-          </div>
+        <p class="img-caption">The Viceroyalty of New Granada, c. 1810 — the colonial territory that became Gran Colombia</p>
+      </div>
+      <div class="reveal d1">
+        <p>For nearly three centuries, northern South America existed under the <strong style="color:#FCD116">Viceroyalty of New Granada</strong>, established in 1717. This vast unit encompassed present-day Colombia, Venezuela, Ecuador, and Panama — the exact territories Bolívar would later attempt to unify.</p>
+        <p>Colonial society was rigidly stratified. Peninsulares (Spanish-born) sat at the top; Creoles like Bolívar held wealth and education but were excluded from the highest offices. This contradiction brewed deep resentment that would fuel revolution.</p>
+        <p>The colonial economy was extractive — designed to funnel wealth back to Spain. Tax burdens fell unevenly, trade was restricted, and local governance was routinely overruled by distant imperial decisions. By 1800, these frustrations had festered for generations.</p>
+        <blockquote>"We were never viceroys or governors, except by extraordinary means." — Bolívar, Angostura Address</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY III — INDEPENDENCE (RED) -->
+<section id="independence" class="section sec-red">
+  <div class="inner">
+    <span class="sec-label">Gallery III</span>
+    <h2>The Fire of Independence (1810–1819)</h2>
+    <p class="intro-p reveal">The spark came from Napoleon's 1808 invasion of Spain, which shattered the empire's legitimacy. Local juntas formed across Latin America — and independence movements ignited.</p>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-year">1808</div>
+        <h3>The Napoleonic Crisis</h3>
+        <p>Napoleon forces the Spanish king's abdication. Colonial juntas form across Latin America, asserting local authority for the first time in three centuries.</p>
+      </div>
+      <div class="card reveal d1">
+        <div class="card-year">1810</div>
+        <h3>July 20th — Colombia</h3>
+        <p>In Bogotá, a staged confrontation triggers a popular uprising. A junta is formed. July 20th is still celebrated as Colombian Independence Day.</p>
+      </div>
+      <div class="card reveal d2">
+        <div class="card-year">1813</div>
+        <h3>The Admirable Campaign</h3>
+        <p>Bolívar leads a lightning campaign across Venezuela, recapturing Caracas in 90 days. He is declared "El Libertador" for the first time.</p>
+      </div>
+      <div class="card reveal d3">
+        <div class="card-year">1816</div>
+        <h3>Return from Haiti</h3>
+        <p>Aided by Haitian President Pétion — whose condition was freeing the enslaved — Bolívar returns stronger than ever, shaping his later abolition decrees.</p>
+      </div>
+    </div>
+    <div class="hbox reveal">
+      <div>
+        <div class="img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Batalla_de_Boyaca.jpg"
+               alt="Battle of Boyacá 1819"/>
+        </div>
+        <p class="img-caption">Battle of Boyacá, August 7, 1819 — the decisive battle of Colombian independence</p>
+      </div>
+      <div>
+        <h3>Battle of Boyacá — August 7, 1819</h3>
+        <p>After a brutal march over the freezing Andes, Bolívar's forces met the Spanish royalist army at the bridge over the Teatinos River and defeated them in under two hours.</p>
+        <p>The Spanish Viceroy fled Bogotá before Bolívar even arrived. Three days later, Bolívar entered the capital to a hero's welcome. New Granada was free — and August 7th is still a national holiday in Colombia today.</p>
+        <p>This victory gave Bolívar the political opening he needed to pursue his larger dream: a unified republic stretching from the Caribbean to the Pacific.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY IV — CREATION (YELLOW) -->
+<section id="creation" class="section sec-yellow">
+  <div class="inner">
+    <span class="sec-label">Gallery IV</span>
+    <h2>Building a Nation: The Creation of Gran Colombia</h2>
+    <div class="two-col">
+      <div class="reveal">
+        <h3>The Congress of Angostura (1819)</h3>
+        <p>In February 1819, from the remote Orinoco town of Angostura, Bolívar delivered his political masterwork — arguing Latin America required a stronger executive than the U.S. model, because colonial rule had left populations unprepared for full federal democracy.</p>
+        <p>Congress approved a constitution and voted to unite Venezuela and New Granada into a single republic: <strong>Gran Colombia</strong>.</p>
+        <h3>The Flag of Gran Colombia</h3>
+        <p>The flag — yellow, blue, and red — became the ancestor of the modern Colombian, Venezuelan, and Ecuadorian flags. All three nations still carry these colors as a direct inheritance from Bolívar's republic.</p>
+      </div>
+      <div class="reveal d1">
+        <div class="img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Flag_of_Gran_Colombia.svg/1200px-Flag_of_Gran_Colombia.svg.png"
+               alt="Flag of Gran Colombia"/>
+        </div>
+        <p class="img-caption">The flag of Gran Colombia — ancestor of the Colombian, Venezuelan, and Ecuadorian flags</p>
+      </div>
+    </div>
+    <div class="const-block reveal">
+      <h3>⚖ The Constitution of Cúcuta — 1821</h3>
+      <div class="const-grid">
+        <div class="const-item">
+          <h4>Territory</h4>
+          <p>Encompassed present-day Colombia, Venezuela, Ecuador, and Panama — roughly 2.5 million km², larger than Western Europe.</p>
+        </div>
+        <div class="const-item">
+          <h4>Government</h4>
+          <p>Centralized republic with a powerful president, a bicameral Congress, and an independent judiciary. Bolívar became the first president.</p>
+        </div>
+        <div class="const-item">
+          <h4>Capital</h4>
+          <p>Bogotá. Santander served as Vice President running daily affairs while Bolívar continued military campaigns in Peru and Bolivia.</p>
+        </div>
+        <div class="const-item">
+          <h4>Abolition</h4>
+          <p>The "free womb" law: children born to enslaved mothers after 1821 would be free at age 18 — a first step toward full abolition.</p>
         </div>
       </div>
-      <div class="legacy-quote reveal">
-        <blockquote>"America is ungovernable. Those who serve the revolution plow the sea."<cite>— Simón Bolívar, 1830</cite></blockquote>
-      </div>
-      <div class="nations-grid reveal">
-        <div class="nation-card co"><h4>🇨🇴 Colombia</h4><p>Retained the name and core territory. Struggled with civil war throughout the 19th century. Today still faces challenges of inequality and regional tension rooted in post-independence structures.</p></div>
-        <div class="nation-card ve"><h4>🇻🇪 Venezuela</h4><p>First to secede in 1829, Venezuela built an oil-rich state but one still haunted by caudillismo — the rule of strongmen — exactly the political pathology Bolívar had feared.</p></div>
-        <div class="nation-card ec"><h4>🇪🇨 Ecuador</h4><p>The southernmost territory of Gran Colombia, Ecuador developed as one of the most conservative successor states, with the Church playing a dominant political role well into the 20th century.</p></div>
-        <div class="nation-card pa"><h4>🇵🇦 Panama</h4><p>Remained part of Colombia until 1903, when U.S. interests in a canal backed a separatist movement. Panama's independence was the last act in the long dissolution of the Bolivarian project.</p></div>
-      </div>
     </div>
-  </section>
-
-  <!-- CONCLUSION -->
-  <section class="exhibit-section red-theme">
-    <div class="section-inner">
-      <div class="section-label">Curatorial Statement</div>
-      <h2 class="section-title">What Gran Colombia Tells Us</h2>
-      <div class="conclusion-block reveal">
-        <p>Gran Colombia lasted only a decade, but its failure was not a failure of Bolívar's imagination — it was a collision between a visionary political project and the deeply embedded realities of colonial geography, elite self-interest, and the limits of what any single leader, however gifted, can impose by force of will.</p>
-        <p>The republic's collapse demonstrates a pattern that would repeat throughout Latin American history: the difficulty of building durable political institutions in societies where independence transferred power from Spanish colonizers to Creole elites, without fundamentally redistributing land, wealth, or political voice to the majority of the population.</p>
-        <p>The nations that emerged from Gran Colombia's dissolution — Colombia, Venezuela, Ecuador, Panama — are still, in some sense, working through the unresolved questions that brought it down. In that light, Gran Colombia is not merely history. It is context.</p>
+    <div class="reveal" style="margin-top:40px;">
+      <div class="img-wrap img-wide">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Gran_Colombia_1824.svg/1200px-Gran_Colombia_1824.svg.png"
+             alt="Map of Gran Colombia 1824"
+             onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Flag_of_Gran_Colombia.svg/800px-Flag_of_Gran_Colombia.svg.png'"/>
       </div>
+      <p class="img-caption">Gran Colombia at its greatest extent, 1824 — larger than Western Europe</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- WORKS CITED -->
-  <section class="exhibit-section dark-theme sources-section">
-    <div class="section-inner">
-      <div class="section-label">Academic References</div>
-      <h2 class="section-title">Works Cited</h2>
-      <div class="sources-list reveal">
-        <div class="source-item"><span class="source-num">1.</span><div>Bushnell, David. <em>The Making of Modern Colombia: A Nation in Spite of Itself.</em> University of California Press, 1993.</div></div>
-        <div class="source-item"><span class="source-num">2.</span><div>Lynch, John. <em>Simón Bolívar: A Life.</em> Yale University Press, 2006.</div></div>
-        <div class="source-item"><span class="source-num">3.</span><div>Safford, Frank, and Marco Palacios. <em>Colombia: Fragmented Land, Divided Society.</em> Oxford University Press, 2002.</div></div>
-        <div class="source-item"><span class="source-num">4.</span><div>Bolívar, Simón. "Address Delivered at the Inauguration of the Second National Congress of Venezuela in Angostura." February 15, 1819. Primary source.</div></div>
-        <div class="source-item"><span class="source-num">5.</span><div>Harvey, Robert. <em>Liberators: Latin America's Struggle for Independence.</em> Overlook Press, 2000.</div></div>
-        <div class="source-item"><span class="source-num">6.</span><div>Helg, Aline. <em>Liberty and Equality in Caribbean Colombia, 1770–1835.</em> University of North Carolina Press, 2004.</div></div>
+<!-- GALLERY V — POLITICAL VISION (BLUE) -->
+<section class="section sec-blue">
+  <div class="inner">
+    <span class="sec-label">Gallery V</span>
+    <h2>Bolívar's Political Vision</h2>
+    <div class="two-col flip">
+      <div class="reveal">
+        <div class="img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Simon_Bolivar_2.jpg"
+               alt="Simón Bolívar portrait"/>
+        </div>
+        <p class="img-caption">Simón Bolívar — soldier, statesman, and political philosopher</p>
+      </div>
+      <div class="reveal d1">
+        <p>Bolívar's political philosophy was shaped by a fundamental tension: he believed deeply in liberty and republican government, yet feared that Latin American societies — shaped by colonial despotism — were not yet ready for full democratic self-governance.</p>
+        <p>He admired the United States but rejected its federal model for Latin America, arguing that a weak central government would lead to fragmentation and caudillo warfare. He proposed a "moral power" — an independent educational institution guiding public virtue — drawn from ancient Rome.</p>
+        <blockquote>"Those who have served the revolution have plowed the sea." — Bolívar</blockquote>
       </div>
     </div>
-  </section>
-
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-flag"><div class="flag-stripe yellow"></div><div class="flag-stripe blue"></div><div class="flag-stripe red"></div></div>
-      <p class="footer-title">Gran Colombia: A Political Legacy</p>
-      <p class="footer-sub">Digital Museum Exhibition — Latin American History</p>
+    <div class="phil-grid reveal">
+      <div class="phil-card"><div class="phil-icon">🦅</div><h4>Strong Executive</h4><p>A powerful presidency was essential to prevent the regional fragmentation destroying Gran Colombia from within.</p></div>
+      <div class="phil-card"><div class="phil-icon">⚖️</div><h4>Mixed Government</h4><p>Drawing on Montesquieu and classical Rome, Bolívar balanced democracy with aristocratic stability in his constitutional proposals.</p></div>
+      <div class="phil-card"><div class="phil-icon">🌎</div><h4>Pan-American Unity</h4><p>The 1826 Congress of Panama was his attempt at a confederation of all Latin American republics — a vision 130 years ahead of its time.</p></div>
+      <div class="phil-card"><div class="phil-icon">🔓</div><h4>Anti-Slavery</h4><p>Influenced by Haiti's example, Bolívar consistently pushed for abolition even when it alienated wealthy Creole elites.</p></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<!-- GALLERY VI — CONFLICT (DARK) -->
+<section id="conflict" class="section sec-dark">
+  <div class="inner">
+    <span class="sec-label">Gallery VI</span>
+    <h2>The Fractures Within</h2>
+    <p class="intro-p reveal">From the moment of its founding, Gran Colombia was under stress. Geographic diversity, regional elites, and competing ambitions created fractures that Bolívar's charisma alone could not seal.</p>
+    <div class="two-col reveal">
+      <div>
+        <div class="img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Francisco_de_Paula_Santander.jpg/600px-Francisco_de_Paula_Santander.jpg"
+               alt="Francisco de Paula Santander"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6f/Simon_Bolivar_2.jpg'"/>
+        </div>
+        <p class="img-caption">Francisco de Paula Santander — Vice President of Gran Colombia and Bolívar's greatest political rival</p>
+      </div>
+      <div>
+        <h3 style="color:#FCD116;margin-top:0;">Bolívar vs. Santander</h3>
+        <p>The deepest rift was between Gran Colombia's own founders. Santander, the Vice President governing from Bogotá, was a legalist who believed in strict constitutional government. Bolívar demanded executive flexibility and military authority. Their conflict mirrored the liberal-conservative divide that would define Colombian politics for the rest of the 19th century.</p>
+        <h3 style="color:#FCD116;">Venezuela's Resentment</h3>
+        <p>Venezuelans resented being governed from Bogotá after supplying the bulk of the liberation army's soldiers. José Antonio Páez, the powerful llanero caudillo, became the focal point of Venezuelan separatism.</p>
+      </div>
+    </div>
+    <div class="ftl">
+      <div class="ft-item reveal">
+        <div class="ft-dot"></div>
+        <h3>The Liberal-Conservative Split</h3>
+        <p>Colombian politics divided sharply between centralists (strong national government, supported by the Church) and federalists (regional autonomy, liberal reforms). This ideological war, which would produce nine civil conflicts in Colombia by 1902, first took shape in Gran Colombia's Congress.</p>
+      </div>
+      <div class="ft-item reveal d1">
+        <div class="ft-dot"></div>
+        <h3>Geographic Impossibility</h3>
+        <p>Gran Colombia stretched across mountains, jungles, savannas, and coastlines with almost no connecting infrastructure. Travel from Bogotá to Caracas could take weeks. Orders from the capital arrived outdated. The republic was not so much governed as theoretically unified.</p>
+      </div>
+      <div class="ft-item reveal d2">
+        <div class="ft-dot"></div>
+        <h3>Economic Inequality Between Regions</h3>
+        <p>Different regions had radically different economies — Venezuelan cattle ranching, New Granadan coffee and gold, Ecuadorian coastal trade. Each region felt its resources were being taxed to support a distant capital that returned little benefit. Economic resentment fed political separatism.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY VII — DICTATORSHIP (RED) -->
+<section class="section sec-red">
+  <div class="inner">
+    <span class="sec-label">Gallery VII</span>
+    <h2>The Dictator's Gambit (1828)</h2>
+    <div class="two-col">
+      <div class="reveal">
+        <h3>The Convention of Ocaña</h3>
+        <p>By 1828, Gran Colombia was in full crisis. A constitutional convention in Ocaña, called to reform the republic, deadlocked completely between Bolívar's allies and Santander's liberal faction. Bolívar's supporters walked out, leaving no quorum to act.</p>
+        <h3>Assuming the Dictatorship</h3>
+        <p>On August 27, 1828, Bolívar issued the Decree of Dictatorship, assuming emergency powers. He suspended the constitution and ruled by decree. Santander was implicated in a September assassination attempt and sent into exile.</p>
+        <p>Bolívar insisted the dictatorship was temporary. But his claim to be "El Libertador" now competed with the image of a would-be tyrant. Key allies began to turn away.</p>
+        <blockquote>"I have served the revolution twenty years, and from those I have drawn only this certainty: one must work hard, suffer much, and die." — Bolívar, 1830</blockquote>
+      </div>
+      <div class="reveal d1">
+        <div class="img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Portrait_of_Sim%C3%B3n_Bol%C3%ADvar%2C_1823_by_Jos%C3%A9_Gil_de_Castro.jpg/600px-Portrait_of_Sim%C3%B3n_Bol%C3%ADvar%2C_1823_by_Jos%C3%A9_Gil_de_Castro.jpg"
+               alt="Bolívar in his final years"
+               onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/6/6f/Simon_Bolivar_2.jpg'"/>
+        </div>
+        <p class="img-caption">Bolívar in his final years — increasingly exhausted, ill, and politically isolated</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY VIII — COLLAPSE (YELLOW) -->
+<section id="collapse" class="section sec-yellow">
+  <div class="inner">
+    <span class="sec-label">Gallery VIII</span>
+    <h2>The Dissolution (1829–1831)</h2>
+    <p class="intro-p reveal">The republic that was born in 1821 died in stages — each secession accelerating the next, like supports giving way in a collapsing building.</p>
+    <div class="collapse-grid">
+      <div class="col-card reveal">
+        <div class="col-flag">🇻🇪</div>
+        <h3>Venezuela Breaks Away</h3>
+        <div class="col-year">1829</div>
+        <p>Páez convened a congress in Caracas that voted to separate. Bolívar's own birthplace was the first to go. He called it "political suicide" but could not stop it.</p>
+      </div>
+      <div class="col-card reveal d1">
+        <div class="col-flag">🇪🇨</div>
+        <h3>Ecuador Separates</h3>
+        <div class="col-year">1830</div>
+        <p>Under General Juan José Flores, Ecuador declared independence in May 1830. The most geographically remote part of the republic simply could not be held together.</p>
+      </div>
+      <div class="col-card reveal d2">
+        <div class="col-flag">☠️</div>
+        <h3>Bolívar Dies</h3>
+        <div class="col-year">1830</div>
+        <p>Bolívar resigned April 27, 1830, aged 47, tubercular and heartbroken. He died December 17, 1830 near Santa Marta. His last words: "José! Let's go! These people don't want us here."</p>
+      </div>
+      <div class="col-card reveal d3">
+        <div class="col-flag">🇵🇦</div>
+        <h3>Panama's Long Road</h3>
+        <div class="col-year">1831–1903</div>
+        <p>Panama stayed attached to Colombia until 1903, when U.S. canal interests backed a separatist movement — the final act of Gran Colombia's dissolution.</p>
+      </div>
+    </div>
+    <div class="hbox full reveal" style="background:rgba(0,0,0,.15);">
+      <h3>Why Did Gran Colombia Fail? — Historians Debate</h3>
+      <div class="debate">
+        <div class="deb-side">
+          <h4>The Structural Argument</h4>
+          <p>David Bushnell argues Gran Colombia was always an impossible project — too large, too diverse, too poorly connected to be governed from a single capital. Bolívar's personality could not substitute for institutions.</p>
+        </div>
+        <div class="deb-side">
+          <h4>The Political Argument</h4>
+          <p>Others emphasize elite interests. Creole landowners had fought for independence to gain local power, not to transfer it to a distant central government. Gran Colombia was dismantled by those who stood to gain most from fragmentation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE TIMELINE (BLUE) -->
+<section id="timeline" class="section sec-blue">
+  <div class="inner">
+    <span class="sec-label">Interactive Feature</span>
+    <h2>Interactive Timeline</h2>
+    <p class="intro-p">Click any event to read its full historical significance.</p>
+    <div class="tl-wrap" id="tlWrap">
+      <div class="tl-line"></div>
+      <div class="tl-events">
+        <div class="tl-ev" onclick="openM('1783')"><div class="tl-dot"></div><div class="tl-yr">1783</div><div class="tl-lbl">Bolívar Born</div></div>
+        <div class="tl-ev" onclick="openM('1808')"><div class="tl-dot"></div><div class="tl-yr">1808</div><div class="tl-lbl">Napoleon Invades Spain</div></div>
+        <div class="tl-ev" onclick="openM('1810')"><div class="tl-dot"></div><div class="tl-yr">1810</div><div class="tl-lbl">Independence Movements</div></div>
+        <div class="tl-ev" onclick="openM('1819a')"><div class="tl-dot"></div><div class="tl-yr">Feb 1819</div><div class="tl-lbl">Congress of Angostura</div></div>
+        <div class="tl-ev" onclick="openM('1819b')"><div class="tl-dot"></div><div class="tl-yr">Aug 1819</div><div class="tl-lbl">Battle of Boyacá</div></div>
+        <div class="tl-ev" onclick="openM('1821')"><div class="tl-dot"></div><div class="tl-yr">1821</div><div class="tl-lbl">Gran Colombia Founded</div></div>
+        <div class="tl-ev" onclick="openM('1826')"><div class="tl-dot"></div><div class="tl-yr">1826</div><div class="tl-lbl">Congress of Panama</div></div>
+        <div class="tl-ev" onclick="openM('1828')"><div class="tl-dot"></div><div class="tl-yr">1828</div><div class="tl-lbl">Bolívar's Dictatorship</div></div>
+        <div class="tl-ev" onclick="openM('1829')"><div class="tl-dot"></div><div class="tl-yr">1829</div><div class="tl-lbl">Venezuela Secedes</div></div>
+        <div class="tl-ev" onclick="openM('1830a')"><div class="tl-dot"></div><div class="tl-yr">May 1830</div><div class="tl-lbl">Ecuador Separates</div></div>
+        <div class="tl-ev" onclick="openM('1830b')"><div class="tl-dot"></div><div class="tl-yr">Dec 1830</div><div class="tl-lbl">Death of Bolívar</div></div>
+        <div class="tl-ev" onclick="openM('1831')"><div class="tl-dot"></div><div class="tl-yr">1831</div><div class="tl-lbl">Gran Colombia Dissolved</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg" onclick="closeM()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="m-close" onclick="closeM()">✕</button>
+    <div class="m-yr" id="mYr"></div>
+    <h3 id="mTitle"></h3>
+    <p id="mText"></p>
+    <div class="m-sig" id="mSig"></div>
+  </div>
+</div>
+
+<!-- GALLERY IX — LEGACY (RED) -->
+<section id="legacy" class="section sec-red">
+  <div class="inner">
+    <span class="sec-label">Gallery IX</span>
+    <h2>The Long Shadow of Gran Colombia</h2>
+    <div class="two-col">
+      <div class="reveal">
+        <h3>Colombia's Turbulent 19th Century</h3>
+        <p>The republic that replaced Gran Colombia spent the rest of the 19th century fighting the same battles Gran Colombia failed to resolve. Between 1830 and 1902, Colombia experienced nine major civil wars — all fundamentally about federalism vs. centralism.</p>
+        <p>The culmination was the devastating <strong>Thousand Days' War (1899–1902)</strong>, leaving over 100,000 dead and creating the conditions for Panama's separation in 1903 — the final fracturing of Bolívar's vision.</p>
+        <h3>Bolívar in Modern Memory</h3>
+        <p>Hugo Chávez adopted "Bolivarianism" for his Venezuelan revolution, renaming the country the <em>Bolivarian Republic of Venezuela</em>. In Colombia, Bolívar's statue stands in every city plaza — his image on currency — but the political struggles he could not solve still echo in today's peace process and debates over inequality.</p>
+      </div>
+      <div class="reveal d1">
+        <div class="img-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/1200px-Flag_of_Colombia.svg.png"
+               alt="Flag of Colombia"/>
+        </div>
+        <p class="img-caption">The flag of Colombia — yellow, blue, and red — inherited directly from the tricolor of Gran Colombia</p>
+      </div>
+    </div>
+    <div class="big-quote reveal">
+      <blockquote>
+        "America is ungovernable. Those who serve the revolution plow the sea."
+        <cite>— Simón Bolívar, 1830</cite>
+      </blockquote>
+    </div>
+    <div class="nations reveal">
+      <div class="nation co"><h4>🇨🇴 Colombia</h4><p>Retained the core territory. Struggled with civil war through the 19th century. Today still faces inequality and regional tension rooted in post-independence structures.</p></div>
+      <div class="nation ve"><h4>🇻🇪 Venezuela</h4><p>First to secede in 1829. Built an oil-rich state but one still haunted by caudillismo — the rule of strongmen — exactly what Bolívar had feared.</p></div>
+      <div class="nation ec"><h4>🇪🇨 Ecuador</h4><p>Most geographically isolated of the successor states. Developed as one of the most conservative republics, with the Church playing a dominant political role.</p></div>
+      <div class="nation pa"><h4>🇵🇦 Panama</h4><p>Remained part of Colombia until 1903, when U.S. canal interests backed separatists — the last act in the long dissolution of the Bolivarian project.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION (GOLD-DARK) -->
+<section class="section sec-gold-dark">
+  <div class="inner">
+    <span class="sec-label">Curatorial Statement</span>
+    <h2>What Gran Colombia Tells Us</h2>
+    <div class="concl reveal">
+      <p>Gran Colombia lasted only a decade, but its failure was not a failure of Bolívar's imagination — it was a collision between a visionary political project and the deeply embedded realities of colonial geography, elite self-interest, and the limits of what any single leader can impose by force of will.</p>
+      <p>The republic's collapse demonstrates a pattern that would repeat throughout Latin American history: the difficulty of building durable political institutions in societies where independence transferred power from Spanish colonizers to Creole elites, without fundamentally redistributing land, wealth, or political voice to the majority of the population.</p>
+      <p>The nations that emerged from Gran Colombia's dissolution — Colombia, Venezuela, Ecuador, Panama — are still, in some sense, working through the unresolved questions that brought it down. In that light, Gran Colombia is not merely history. It is context.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WORKS CITED (DARK) -->
+<section class="section sec-dark">
+  <div class="inner">
+    <span class="sec-label">Academic References</span>
+    <h2>Works Cited</h2>
+    <div class="src-list reveal">
+      <div class="src-item"><span class="src-n">1.</span><div>Bushnell, David. <em>The Making of Modern Colombia: A Nation in Spite of Itself.</em> University of California Press, 1993.</div></div>
+      <div class="src-item"><span class="src-n">2.</span><div>Lynch, John. <em>Simón Bolívar: A Life.</em> Yale University Press, 2006.</div></div>
+      <div class="src-item"><span class="src-n">3.</span><div>Safford, Frank, and Marco Palacios. <em>Colombia: Fragmented Land, Divided Society.</em> Oxford University Press, 2002.</div></div>
+      <div class="src-item"><span class="src-n">4.</span><div>Bolívar, Simón. "Address Delivered at the Inauguration of the Second National Congress of Venezuela in Angostura." February 15, 1819. Primary source.</div></div>
+      <div class="src-item"><span class="src-n">5.</span><div>Harvey, Robert. <em>Liberators: Latin America's Struggle for Independence.</em> Overlook Press, 2000.</div></div>
+      <div class="src-item"><span class="src-n">6.</span><div>Helg, Aline. <em>Liberty and Equality in Caribbean Colombia, 1770–1835.</em> University of North Carolina Press, 2004.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-flag"><div class="y"></div><div class="b"></div><div class="r"></div></div>
+  <p class="foot-title">Gran Colombia: A Political Legacy</p>
+  <p class="foot-sub">Digital Museum Exhibition — Latin American History</p>
+</footer>
+
+<script>
+const TD = {
+  "1783":  { t:"Simón Bolívar Is Born", b:"Born July 24, 1783 in Caracas, Venezuela into the Creole elite. Orphaned before age ten, he was educated by private tutors and later traveled to Europe, where Enlightenment philosophy — Rousseau, Voltaire, Montesquieu — ignited his revolutionary vision. In 1805, on Rome's Monte Sacro, he swore an oath to liberate his homeland from Spanish rule.", s:"Significance: Bolívar's aristocratic background gave him access to education and networks, but his Creole identity — excluded from the highest colonial offices — fueled his commitment to revolution." },
+  "1808":  { t:"Napoleon Invades Spain", b:"Napoleon forces the abdication of King Ferdinand VII, creating a crisis of legitimacy throughout the Spanish empire. Colonial juntas form across Latin America, claiming to govern 'in the name of the king' — but in practice, exercising unprecedented local autonomy for the first time in three centuries.", s:"Significance: The Napoleonic Crisis removed the ideological foundation of colonial obedience. Once the king was gone, there was no clear reason to defer to distant imperial authority." },
+  "1810":  { t:"Independence Movements Begin", b:"On July 20th in Bogotá, the 'El Florero de Llorente' incident triggers a popular uprising — celebrated as Colombian Independence Day. In Venezuela, a junta overthrows the colonial governor. Bolívar emerges as a leading revolutionary voice across northern South America.", s:"Significance: 1810 marks the irreversible beginning of Latin American independence, though full freedom would take nearly a decade of brutal warfare to secure." },
+  "1819a": { t:"Congress of Angostura", b:"On February 15, 1819, Bolívar delivers the Angostura Address — his masterwork of political philosophy. He argues Latin America requires a stronger executive than the U.S. model, proposes a hereditary senate for stability, and declares the union of Venezuela and New Granada as Gran Colombia. Congress approves the plan.", s:"Significance: The Angostura Address remains one of the most sophisticated political texts produced in the Americas — a frank analysis of the challenges facing postcolonial democracy." },
+  "1819b": { t:"Battle of Boyacá — Independence Secured", b:"On August 7, 1819, after a punishing march over the freezing Andes, Bolívar's forces meet the Spanish royalist army at Boyacá bridge and defeat them in under two hours. The Spanish Viceroy flees Bogotá before Bolívar arrives. Three days later, Bolívar enters to a hero's welcome. New Granada is free.", s:"Significance: Boyacá was the decisive turning point of Colombian independence. August 7th remains a national holiday in Colombia to this day." },
+  "1821":  { t:"Gran Colombia Officially Founded", b:"The Constitution of Cúcuta is ratified on August 30, 1821, formally establishing the Republic of Gran Colombia. It unifies present-day Colombia, Venezuela, Ecuador, and Panama. Bolívar becomes first president; Santander serves as Vice President. The republic spans over 2.5 million square kilometers.", s:"Significance: Gran Colombia was the largest political unit in South American history — the high-water mark of Bolívar's vision." },
+  "1826":  { t:"Congress of Panama", b:"Bolívar convenes the Congress of Panama in June 1826, inviting all Latin American republics to form a continental confederation. Only four nations send representatives. The treaty produced is never ratified by any participant. Bolívar's Pan-American vision fails in his lifetime.", s:"Significance: The first attempt at Pan-American political unity, it inspired later regional organizations including the OAS — 130 years later." },
+  "1828":  { t:"Bolívar Declares Dictatorship", b:"After the constitutional convention at Ocaña deadlocks, Bolívar issues the Decree of Dictatorship on August 27, 1828 — suspending the constitution and ruling by decree. In September he survives an assassination attempt. Santander is exiled. Key allies begin to abandon him.", s:"Significance: The dictatorship transformed 'El Libertador' into 'El Déspota' in many eyes, and accelerated the republic's final collapse." },
+  "1829":  { t:"Venezuela Breaks Away", b:"José Antonio Páez convenes a congress in Caracas in November 1829 that votes to separate Venezuela from Gran Colombia. Páez becomes Venezuela's first president. Bolívar calls it 'political suicide' but is too ill to prevent it. The heartland of his own birth is the first to go.", s:"Significance: Venezuela's departure was the fatal blow to Gran Colombia — proving that not even Bolívar's homeland could sustain the union." },
+  "1830a": { t:"Ecuador Declares Independence", b:"Ecuador, under General Juan José Flores, declares independence from Gran Colombia on May 13, 1830. The most geographically isolated part of the republic, separated from both Bogotá and Caracas by the Andes, Ecuador had never felt truly unified with the rest of the republic.", s:"Significance: Ecuador's departure left only present-day Colombia and Panama — a shadow of Bolívar's original vision." },
+  "1830b": { t:"Bolívar Resigns and Dies", b:"On April 27, 1830, Bolívar resigns the presidency, planning exile in Europe. He never makes it. Suffering from tuberculosis, financially ruined, and heartbroken by the collapse of his republic, he dies on December 17, 1830 at the hacienda San Pedro Alejandrino near Santa Marta, Colombia. He was 47 years old.", s:"Significance: Bolívar died believing his life's work had failed. History proved far kinder — he is celebrated today as the greatest figure in Latin American history." },
+  "1831":  { t:"Gran Colombia Officially Dissolved", b:"On November 19, 1831, the Congress of Nueva Granada formally declares Gran Colombia dissolved and establishes the Republic of New Granada. The territories now exist as three separate republics: New Granada (Colombia/Panama), Venezuela, and Ecuador.", s:"Significance: The dissolution set the political map of northern South America as it exists today, leaving unresolved tensions that would define Colombian politics for 170 years." }
+};
+
+function openM(id) {
+  const d = TD[id];
+  if(!d) return;
+  document.getElementById('mYr').textContent    = id.replace('a','').replace('b','');
+  document.getElementById('mTitle').textContent = d.t;
+  document.getElementById('mText').textContent  = d.b;
+  document.getElementById('mSig').textContent   = d.s;
+  document.getElementById('modalBg').classList.add('on');
+  document.body.style.overflow = 'hidden';
+}
+function closeM() {
+  document.getElementById('modalBg').classList.remove('on');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeM(); });
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin:'0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Navbar
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.background =
+    window.scrollY > 60 ? 'rgba(0,0,0,.97)' : 'rgba(0,0,0,.92)';
+});
+
+// Timeline drag
+const tl = document.getElementById('tlWrap');
+let down=false, sx, sl;
+tl.addEventListener('mousedown', e=>{ down=true; tl.style.cursor='grabbing'; sx=e.pageX-tl.offsetLeft; sl=tl.scrollLeft; });
+tl.addEventListener('mouseleave',()=>{ down=false; tl.style.cursor='grab'; });
+tl.addEventListener('mouseup',  ()=>{ down=false; tl.style.cursor='grab'; });
+tl.addEventListener('mousemove', e=>{ if(!down)return; e.preventDefault(); tl.scrollLeft=sl-(e.pageX-tl.offsetLeft-sx)*1.5; });
+</script>
 </body>
 </html>
+
+       
